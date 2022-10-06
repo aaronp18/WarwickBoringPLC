@@ -1,0 +1,21 @@
+// GVL for the visualisations
+{attribute 'qualified_only'}
+VAR_GLOBAL
+	visuEstop: BOOL := FALSE; // UI E Stop, true when pressed
+	
+	resetButton : BOOL := FALSE;
+
+	powerSlider: INT := 0; // Power Slider
+	
+	extendButton: BOOL := FALSE;
+	retractButton: BOOL := FALSE;
+	
+	tAEn: BOOL := FALSE;
+	tBEn: BOOL := FALSE;
+	tCEn: BOOL := FALSE;
+	tDEn: BOOL := FALSE;
+	motEn: BOOL := FALSE;
+	grpAEn: BOOL := FALSE;
+	grpBEn: BOOL := FALSE;
+	
+END_VAR

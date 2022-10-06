@@ -1,0 +1,24 @@
+// This global variable list is to instanitate all of the IO variables to the named variables.
+{attribute 'qualified_only'}
+VAR_GLOBAL
+	// CC E STOP - Switch
+	eStopCC: BOOL; 
+	// HPU relief valve to enable/disable hydraulics
+	hpuReliefValve: BOOL;
+	
+	// Hydraulic Pressure sensor A
+	hydraulicPressureSensorA: INT; 
+	
+	// Valve Amplifiers
+	;
+	// Motor Valve Amplifier
+	motValveAmp: INT;
+	// Thrust Cylinder A Valve Amplifier
+	thrAValveAmp: INT;
+	// Thrust Cylinder B Valve Amplifier
+	thrBValveAmp: INT;
+	// Thrust Cylinder C Valve Amplifier
+	thrCValveAmp: INT;
+	// Thrust Cylinder D Valve Amplifier
+	thrDValveAmp: INT;
+END_VAR

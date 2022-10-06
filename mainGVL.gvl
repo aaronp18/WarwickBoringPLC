@@ -1,0 +1,10 @@
+// For main global variables
+{attribute 'qualified_only'}
+VAR_GLOBAL
+	// Saftey
+;
+	// Is inerlocked
+	isSystemInterlocked: BOOL; // True when estop or problem occurs, requires reset to clear;
+	isResettable: BOOL := FALSE; // True when system can be reset
+
+END_VAR
