@@ -21,4 +21,16 @@ VAR_GLOBAL
 	thrCValveAmp: INT;
 	// Thrust Cylinder D Valve Amplifier
 	thrDValveAmp: INT;
+	
+	// Gripper Amplifiers
+	grpAPwrAmp: INT;
+	grpBPwrAmp: INT;
+	
+	// Gripper A Directions
+	grpADirA: BOOL;
+	grpADirB: BOOL;
+	
+	// Gripper B Directions
+	grpBDirA: BOOL;
+	grpBDirB: BOOL;
 END_VAR
