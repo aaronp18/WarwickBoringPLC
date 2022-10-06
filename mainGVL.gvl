@@ -7,4 +7,14 @@ VAR_GLOBAL
 	isSystemInterlocked: BOOL; // True when estop or problem occurs, requires reset to clear;
 	isResettable: BOOL := FALSE; // True when system can be reset
 
+	isSystemEnabled: BOOL := FALSE; // True when system is running and enabled
+	
+	isPoweredOn: BOOL := FALSE; // Power button
+	
+	
+	// General Values
+	;
+	cpuLoad: UDINT;
+	
+	
 END_VAR

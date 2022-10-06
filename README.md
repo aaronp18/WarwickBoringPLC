@@ -1,6 +1,12 @@
 ## Changelog
 Whenever you push a change, make a detailed note about it in here along with changing the .st file for what you modified. This way multiple can work at once. You can add images too if needed. Thanks
 
+### Polished Hydraulic control + added hpu control
+- Done a bunch of stuff
+- Added some varaibles and maps etc
+-  **YOU SHOULD DOWNLOAD THE PROJECT AS CONFIGURATION HAS CHANGED!!!**
+
+> Aaron 
 ### Added Hydraulic control with UI 06/10/22 - 12PM
 - Mapped controls to values if enabled
 - Current outputs on -100% to 100% as parametrs

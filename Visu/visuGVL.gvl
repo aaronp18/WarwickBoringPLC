@@ -18,4 +18,9 @@ VAR_GLOBAL
 	grpAEn: BOOL := FALSE;
 	grpBEn: BOOL := FALSE;
 	
+	overrideValuesButton: BOOL := FALSE; // Used to manually set percentage (doesnt use direction)
+	manualValue: INT := 0;
+	
+	hpuEnable: BOOL := FALSE; // If the HPU relief is on
+	
 END_VAR
