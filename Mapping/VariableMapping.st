@@ -1,16 +1,30 @@
 // **********************************************************************
-// ** VERSION 1.0.0 - Aaron 28/01/23**
+// ** VERSION 1.0.1 - Aaron 28/01/23**
 // Map all of the variables to the IO
 //
 // Changelog:
-// Added ME mappings
+// - Added control cabient indicators
+// - Added ME mappings
 // **********************************************************************
+
+// ========== General ============
+
+// ==== Inputs ====
+mGVL.eStopCC := DI_0;
+
+// ==== Outputs ====
+// Is interlocked
+DO_9 := mainGVL.isSystemInterlocked;
+// Still issue
+DO_17 := mainGVL.isIssue;
+
+// Is the system enabled
+DO_18 := mainGVL.isSystemEnabled;
 
 // ========== Hydraullics ============
 
 // ==== Inputs ====
 mGVL.hydraulicPressureSensorA := ACI_3;
-mGVL.eStopCC := DI_0;
 
 // ==== Outputs ====
 DO_25 := mGVL.hpuReliefValve;

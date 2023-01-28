@@ -31,15 +31,27 @@ Thanks :)
 
 ```
 
-### Implemented ME Visu for Testing - 28/01/22 - Aaron
+### Added Control Cabinet indicators - 28/01/23 - Aaron
 #### File versions: 
-- <file> <version> -> <new version>
+- mGVL 1.0.0 -> 1.0.1
+- VariableMapping 1.0.0 -> 1.0.1
+- mainGVL 1.0.0
+- safetyProg 1.0.0
+- DO 
+- DIO
+-  **YOU SHOULD DOWNLOAD THE PROJECT AS CONFIGURATION HAS CHANGED!!!**
+
+#### Change Description
+- Moved isIssue to global
+- Added outputs for system enabled, interlocked and isIssue
+  
+### Implemented ME Visu for Testing - 28/01/23 - Aaron
+#### File versions: 
 - mGVL 1.0.0
 - VariableMapping 1.0.0
 - AIO_1 Settings 1.0.0
 - MEVisu new, 1.0.0
-- **<requires a new download if configurations have changed>**
-
+-  **YOU SHOULD DOWNLOAD THE PROJECT AS CONFIGURATION HAS CHANGED!!!**
 #### Change Description
 - Added correct calculations for AIO input ( measurement (micro amps) * 16/25 - 2560 = 0 < 25000 milli bar) 
 - Added visu for Me (Traces with outputs)

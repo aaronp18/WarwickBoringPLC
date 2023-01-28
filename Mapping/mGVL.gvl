@@ -1,14 +1,20 @@
 
 // **********************************************************************
-// ** VERSION 1.0.0 - Aaron 28/01/23**
+// ** VERSION 1.0.1 - Aaron 28/01/23**
 // This global variable list is to instanitate all of the IO variables to the named variables.
 //
-// Changelog: 
-// Added ME 
+// Changelog:
+// - Added control cabient indicators 
+// - Added ME 
 // **********************************************************************
 
 {attribute 'qualified_only'}
 VAR_GLOBAL
+
+	// ==== General ====
+
+	
+	// ==== Hydraulics ===
 	// CC E STOP - Switch
 	eStopCC: BOOL; 
 	// HPU relief valve to enable/disable hydraulics

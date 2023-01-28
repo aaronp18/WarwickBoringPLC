@@ -3,8 +3,6 @@ VAR
 	isHPSA_unsafe : BOOL; // True if Hydraullic Pressure is too high
 	isEStopPressed : BOOL; // True if an ESTOP is pressed
 
-	isInterlocked : BOOL; // If any interlocks have occured
-
 
 END_VAR
 
@@ -16,14 +14,14 @@ isUnsafe(sensorMin := - 26, sensorMax := 100, sensorValue := mgvl.hydraulicPress
 // Control Cabinet E STOP, Visualisation Estop
 isEStopPressed := (NOT mgvl.eStopCC) OR visuGVL.visuEstop;
 
-isIssue := isHPSA_unsafe OR isESTOPPressed;
+mainGVL.isIssue := isHPSA_unsafe OR isESTOPPressed;
 
 // Interlock Check
-IF isIssue THEN
+IF mainGVL.isIssue THEN
 	mainGVL.isSystemInterlocked := TRUE;
 END_IF
 
-mainGVL.isResettable := (NOT isIssue) AND (mainGVL.isSystemInterlocked);
+mainGVL.isResettable := (NOT mainGVL.isIssue) AND (mainGVL.isSystemInterlocked);
 
 // If clearable, and then reset button pressed
 IF mainGVL.isResettable AND (visuGVL.resetButton) THEN
