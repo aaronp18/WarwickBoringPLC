@@ -31,6 +31,18 @@ Thanks :)
 
 ```
 
+### Implemented ME Visu for Testing - 28/01/22 - Aaron
+#### File versions: 
+- <file> <version> -> <new version>
+- mGVL 1.0.0
+- VariableMapping 1.0.0
+- AIO_1 Settings 1.0.0
+- MEVisu new, 1.0.0
+- **<requires a new download if configurations have changed>**
+
+#### Change Description
+- Added correct calculations for AIO input ( measurement (micro amps) * 16/25 - 2560 = 0 < 25000 milli bar) 
+- Added visu for Me (Traces with outputs)
 ### Added Variable structure to VisuGVL - 04/01/23 - Aaron
 
 #### File versions: 
