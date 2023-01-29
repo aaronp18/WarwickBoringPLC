@@ -31,6 +31,20 @@ Thanks :)
 
 ```
 
+### Added ME Flow meter - 29/01/23 - Aaron
+#### File versions: 
+- mGVL 1.0.1 -> 1.0.2
+- VariableMapping 1.0.1 -> 1.0.2
+- MaterialExtraction 1.0.0
+- visuGVL 1.0.0 -> 1.0.1
+- ME Visu 
+- Main gvl 1.0.0
+#### Change Description
+- Added flow meter logic with rate measurement
+- Updated ME visu
+
+  
+
 ### Added Control Cabinet indicators - 28/01/23 - Aaron
 #### File versions: 
 - mGVL 1.0.0 -> 1.0.1

@@ -1,9 +1,10 @@
 
 // **********************************************************************
-// ** VERSION 1.0.1 - Aaron 28/01/23**
+// ** VERSION 1.0.2 - Aaron 29/01/23**
 // This global variable list is to instanitate all of the IO variables to the named variables.
 //
 // Changelog:
+// - Added ME flow meter
 // - Added control cabient indicators 
 // - Added ME 
 // **********************************************************************
@@ -59,5 +60,10 @@ VAR_GLOBAL
 	
 	// TBM slurry chamber pressure sensor
 	// TODO
+	
+	// Flow Meter
+	meFlowMeterPulse: BOOL;	
+	
+
 	
 END_VAR

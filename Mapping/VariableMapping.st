@@ -1,8 +1,9 @@
 // **********************************************************************
-// ** VERSION 1.0.1 - Aaron 28/01/23**
+// ** VERSION 1.0.2 - Aaron 29/01/23**
 // Map all of the variables to the IO
 //
 // Changelog:
+// - Added ME flowmeter
 // - Added control cabient indicators
 // - Added ME mappings
 // **********************************************************************
@@ -57,6 +58,9 @@ DO_29 := mGVL.grpBDirB;
 // 0-25000mbar
 mGVL.feederPumpPressureSensor := ACI_0;
 mGVL.suctionPumpPressureSensor := ACI_1;
+
+mGVL.meFlowMeterPulse := DIP_1;
+
 
 // ==== Outputs ====
 
