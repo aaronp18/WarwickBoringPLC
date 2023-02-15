@@ -31,6 +31,18 @@ Thanks :)
 
 ```
 
+### Changes - <Date> - <Who>
+
+#### File versions: 
+- <file> <version> -> <new version>
+- **<requires a new download if configurations have changed>**
+- SafteyProg
+
+#### Change Description
+- Implemented key switch that on rising edge is used as reset.
+
+
+
 ### Added ME Flow meter - 29/01/23 - Aaron
 #### File versions: 
 - mGVL 1.0.1 -> 1.0.2

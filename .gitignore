@@ -2,3 +2,6 @@
 *.precompilecache
 *.~u
 WarwickBoringPLC.backup
+*.compileinfo
+*.bootinfo
+*.bootinfo_guids
