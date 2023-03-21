@@ -13,16 +13,69 @@
 VAR_GLOBAL
 
 	// ==== General ====
-
+	keySwitch: BOOL; // Keyswitch used to reset
+	
+	tbmPowered: BOOL; // Is the TBM plugged in
+	
+	temperatureCC: REAL; // The temperature in the control cabinet
+	temperaturePC: REAL; // The temperature in the power cabinet
+	temperatureOut: REAL; // The outside air temperature
+	temperatureTBM: REAL; // The temperature in the TBM
+	temperaturePi: REAL; // The temperature in the TBM
+	
+	energyConsumptionPulse: BOOL; // Pulse of the energy consumption meter
+	
+	// ==== Saftey ====
+	
+	eStopCC: BOOL; // CC E STOP - Switch
+	eStopPC: BOOL; // E Stop for Power Cabinet
+	eStopCP: BOOL; // E Stop for Control Panel
+	
+	methaneSensorTBM: REAL; // Methane levels in the tunnel
+	
+	doorOpenCC: BOOL; // TRUE if the CC door is open
+	doorOpenPC: BOOL; // TRUE if the PC door is open
+	
+	// ==== Control Panel ====
+	// == Buttons ==
+	resetButtonCP: BOOL; // Control Panel reset button - on when pressed
+	runButtonCP: BOOL; // Control Panel run button - on when pressed
+	pauseButtonCP: BOOL; // Control Panel pause button
+	startupButtonCP: BOOL; // Control Panel startup button
+	controlledStopButtonCP: BOOL; // Control Panel controlled stop button
+	doorOpenLimitSwitchCC: BOOL; // Control cabinet limit switch - on when door open
+	doorOpenLimitSwitchPC: BOOL; // Power cabinet limit switch - on when door open
+	
+	// == Indicators ==
+	warningIndicator: BOOL; // State indicator
+	alarmIndicator: BOOL; // State indicator
+	isResettableIndicator: BOOL; // State indicator
+	isRunningIndicator: BOOL; // State indicator
+	isPausedIndicator: BOOL; // State indicator
+	isStartupIndicator: BOOL; // State indicator
+	isControlledStopIndicator: BOOL; // State indicator
+	
+	
+	// ======= Contactors =========
+	
+	c31HPUContactor: BOOL;
+	c32HPUAirPumpContactor: BOOL;
+	c33ThreePPumpsContactor: BOOL;
+	c12MEContactor: BOOL;
+	c15OtherContactor: BOOL;
+	feederPumpContactor: BOOL;
 	
 	// ==== Hydraulics ===
-	// CC E STOP - Switch
-	eStopCC: BOOL; 
 	// HPU relief valve to enable/disable hydraulics
 	hpuReliefValve: BOOL;
 	
 	// Hydraulic Pressure sensor A
-	hydraulicPressureSensorA: INT; 
+	hydraulicPressureSensorA: REAL; 
+	hydraulicPressureSensorB: REAL; 
+	hydraulicPressureSensorC: REAL; 
+	hydraulicPressureSensorD: REAL; 
+	hydraulicPressureSensorE: REAL; 
+	hydraulicPressureSensorF: REAL; 
 	
 	// Valve Amplifiers
 	;
@@ -40,6 +93,8 @@ VAR_GLOBAL
 	// Gripper Amplifiers
 	grpAPwrAmp: INT;
 	grpBPwrAmp: INT;
+	grpAPwrEn: BOOL;
+	grpBPwrEn: BOOL;
 	
 	// Gripper A Directions
 	grpADirA: BOOL;
@@ -53,16 +108,23 @@ VAR_GLOBAL
 	// === Material Extraction ===
 	
 	// Suction Pump pressure sensor
-	suctionPumpPressureSensor: INT;
+	suctionPumpPressureSensor: REAL;
 	
 	// Feeder Pump Pressure sensor
-	feederPumpPressureSensor: INT;
+	feederPumpPressureSensor: REAL;
 	
 	// TBM slurry chamber pressure sensor
-	// TODO
+	cutterheadPressureSensor: REAL;
 	
 	// Flow Meter
 	meFlowMeterPulse: BOOL;	
+
+	// ======= Navigation =========
+	
+	// Inclinometers
+	pitchInclinometer: REAL; // +- 15 degree
+	yawInclinometer: REAL; // +- 45 degree
+	rollInclinometer: REAL; // +- 45 degree
 	
 
 	
