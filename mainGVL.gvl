@@ -12,7 +12,7 @@ VAR_GLOBAL
 	// Saftey
 ;
 	// Is inerlocked
-	isSystemInterlocked: BOOL; // True when estop or problem occurs, requires reset to clear;
+	isSystemInterlocked: BOOL := TRUE; // True when estop or problem occurs, requires reset to clear;
 	isResettable: BOOL := FALSE; // True when system can be reset
 
 	isSystemEnabled: BOOL := FALSE; // True when system is running and enabled
@@ -27,7 +27,15 @@ VAR_GLOBAL
 	
 	
 	// Material Extraction
-	meFlowMeterCount: INT;
-	meFlowMeterRate: REAL;
+	meFlowMeterCount: INT; // L
+	meFlowMeterRate: REAL; // L/s
+	
+	// Energy Consumption
+	energyConsumptionTotal: INT; // wH
+	energyConsumptionPower: REAL; // w
+	
+	sensorReadings: ARRAY [0..30] OF SensorReading;
+	sensorReadingsFunctionBlocks: ARRAY [0..30] OF ReadSensor;
+	colour: DWORD:= 16#FFA50000;
 	
 END_VAR
