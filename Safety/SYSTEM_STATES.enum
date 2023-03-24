@@ -1,0 +1,19 @@
+{attribute 'qualified_only'}
+{attribute 'strict'}
+TYPE SYSTEM_STATE :
+(
+	NULL := -1,
+	INIT := 0,
+	STOPPED := 1,
+	IDLE := 2,
+	STARTING := 3, 
+	RUNNING := 4,
+	STOPPING := 5,
+	ABORTING := 6,
+	ABORTED := 7,
+	CLEARING := 8,
+	SUSPENDING := 9,
+	UNSUSPENDING := 10,
+	RESETTING := 11
+);
+END_TYPE
