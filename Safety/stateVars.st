@@ -4,6 +4,12 @@ VAR
     resetTON : TON;
 END_VAR
 
+//each timer about 2s
+//add timer to stopping
+//add timer to suspending
+//add timer to unsuspending
+//add timer to starting 
+
 //init vars
 resetTP (IN:= systemGVL.resetTrigger.Q, PT := T#3s);
 resetTON (IN:= resetTP.Q, PT := T#2s);
