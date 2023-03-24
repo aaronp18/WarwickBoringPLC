@@ -1,0 +1,23 @@
+{attribute 'qualified_only'}
+VAR_GLOBAL
+    // Whole system state
+    systemState:  SYSTEM_STATE := SYSTEM_STATE.NULL;
+    finishedInitialising: BOOL := FALSE; //high when PLC ready to run
+    resetSignal:  BOOL := FALSE; //high when PLC should reset
+    finishedResetting:     BOOL := FALSE; //high when PLC has reset
+    startSignal:  BOOL := FALSE; //high when PLC should start
+    finishedStarting:   BOOL := FALSE; //high when PLC has started
+    suspendSignal: BOOL := FALSE; //high when PLC should suspend
+    finishedSuspending: BOOL := FALSE; //high when PLC has suspended
+    unsuspendSignal : BOOL := FALSE; //high when PLC should unsuspend
+    finishedUnsuspending: BOOL := FALSE; //high when PLC has unsuspended
+    finishingStopping:   BOOL := FALSE; //high when PLC has stopped
+    finishedAborting:   BOOL := FALSE; //high when PLC has aborted
+    clearSignal: BOOL := FALSE; //high when PLC should clear
+    resetTrigger: R_TRIG;
+    startTrigger: R_TRIG;
+    suspendTrigger: R_TRIG;
+    unsuspendTrigger: R_TRIG;
+    clearTrigger: R_TRIG;
+    stateError:  BOOL := FALSE; //high when PLC was in an invalid state
+END_VAR

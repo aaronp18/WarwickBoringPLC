@@ -3,7 +3,7 @@
 TYPE SYSTEM_STATE :
 (
 	NULL := -1,
-	INIT := 0,
+	INITIALISING := 0,
 	STOPPED := 1,
 	IDLE := 2,
 	STARTING := 3, 
