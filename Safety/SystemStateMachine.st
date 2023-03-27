@@ -3,6 +3,8 @@ systemGVL.startTrigger (CLK := systemGVL.startSignal); //start trigger
 systemGVL.suspendTrigger (CLK := systemGVL.suspendSignal); //suspend trigger
 systemGVL.unsuspendTrigger (CLK := systemGVL.unsuspendSignal); //unsuspend trigger
 systemGVL.clearTrigger (CLK := systemGVL.clearSignal); //clear trigger
+systemGVL.abortTrigger (CLK := systemGVL.abortSignal); //abort trigger
+systemGVL.stopTrigger (CLK := systemGVL.stopSignal); //stop trigger
 
 CASE systemGVL.systemState OF
     SYSTEM_STATE.NULL:
@@ -63,3 +65,9 @@ CASE systemGVL.systemState OF
         systemGVL.systemState := SYSTEM_STATE.ABORTING; //error has occured
         systemGVL.stateError := TRUE;
 END_CASE
+
+IF systemGVL.abortTrigger.Q THEN
+    systemGVL.systemState := SYSTEM_STATE.ABORTING; //move to aborting
+ELSEIF systemGVL.stopTrigger.Q THEN
+    systemGVL.systemState := SYSTEM_STATE.STOPPING; //move to stopping
+END_IF
