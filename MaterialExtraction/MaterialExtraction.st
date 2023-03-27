@@ -17,30 +17,6 @@ END_VAR
 consumptionMeterLogic();
 feederPumpControlLogic();
 
-CASE systemGVL.systemState OF
-    SYSTEM_STATE.NULL:
-    SYSTEM_STATE.INITIALISING:
-    SYSTEM_STATE.STOPPED:
-    SYSTEM_STATE.RESETTING, SYSTEM_STATE.IDLE:
-		//feeder pump disabled
-		//VFD powered
-		//suction pump disabled
-	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.SUSPENDING, SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.UNSUSPENDING:
-		//feeder pump enabled
-		//VFD powered
-		//suction pump enabled
-		//VFD start
-    SYSTEM_STATE.STOPPING:
-		//VFD stop
-		//feeder pump disabled
-		//suction pump disabled
-		//VFD depowered
-    SYSTEM_STATE.ABORTING:
-    SYSTEM_STATE.ABORTED:
-    SYSTEM_STATE.CLEARING:
-    ELSE:
-END_CASE
-
 // ####################
 // ### Feeder Pump  ###
 // ####################

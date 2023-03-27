@@ -5,6 +5,6 @@ FUNCTION_BLOCK
     //rising edge rests timer
     //mGVL.tbmStatusIn
 
-    beatTOF(IN := mGVL.tbmStatusIn, PT:= T#1s, Q => mainGVL.tbmPIHeartBeat); //low after 1s -> no heartbeat
+    beatTOF(IN := mGVL.tbmStatusIn, PT:= T#1s, Q => mainGVL.tbmPIHeartBeat); //low after 1s if no heartbeat
 
 END_FUNCTION_BLOCK
