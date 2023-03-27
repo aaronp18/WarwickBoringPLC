@@ -17,48 +17,52 @@ END_VAR
 consumptionMeterLogic();
 feederPumpControlLogic();
 
+
+
+// #############################
+// ### 1P Machine Power C12  ###
+// #############################
+// control for ME 1 Phase - polymer pump, polymer mixer
+CASE systemGVL.systemState OF
+	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, UNSUSPENDING:
+		meGVL.me1PMachineEnabled := TRUE; //polymer pump & mixer start
+	ELSE
+		meGVL.me1PMachineEnabled := FALSE; //polymer pump & mixer stop
+END_CASE
+
+
 // ####################
 // ### Feeder Pump  ###
 // ####################
+// control for contactor of feeder pump
 CASE systemGVL.systemState OF
-	SYSTEM_STATE.NULL, SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, 
-	SYSTEM_STATE.RESETTING, SYSTEM_STATE.IDLE, SYSTEM_STATE.STOPPING, 
-	SYSTEM_STATE.ABORTING, SYSTEM_STATE.ABORTED, SYSTEM_STATE.CLEARING:
-		//feeder pump disabled
 	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.SUSPENDING, 
 	SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.UNSUSPENDING:
-		//feeder pump enabled
-	ELSE:
+		meGVL.meFeederPumpEnabled := TRUE; //feeder pump enabled
+	ELSE
+		meGVL.meFeederPumpEnabled := FALSE; //feeder pump disabled
 END_CASE
 
-// ####################
-// ### Suction Pump ###
-// ####################
+// ##############################
+// ### Suction Pump VFD Power ###
+// ##############################
+// control for contactor of suction pump VFD
 CASE systemGVL.systemState OF
-	SYSTEM_STATE.NULL, SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, 
-	SYSTEM_STATE.RESETTING, SYSTEM_STATE.IDLE, SYSTEM_STATE.STOPPING, 
-	SYSTEM_STATE.ABORTING, SYSTEM_STATE.ABORTED, SYSTEM_STATE.CLEARING:
-		//suction pump disabled
 	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.SUSPENDING, 
 	SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.UNSUSPENDING:
-		//suction pump enabled
-	ELSE:
+		meSuctionPumpContactorEnabled := TRUE; //suction pump contactor enabled
+	ELSE
+		meSuctionPumpContactorEnabled := FALSE; //suction pump contactor disabled
 END_CASE
 
 // ####################
 // ### VFD Control  ###
 // ####################
+// control for run/stop of suction
+// actively digging - running, unsuspending, starting
 CASE systemGVL.systemState OF
-	SYSTEM_STATE.NULL, SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, 
-	SYSTEM_STATE.ABORTING, SYSTEM_STATE.ABORTED, SYSTEM_STATE.CLEARING:
-		//VFD depowered
-	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.SUSPENDING, 
-	SYSTEM_STATE.RESETTING, SYSTEM_STATE.IDLE, SYSTEM_STATE.SUSPENDED, 
-	SYSTEM_STATE.UNSUSPENDING:
-		//VFD powered
-		//VFD start
-	SYSTEM_STATE.STOPPING:
-		//VFD stop
-		//VFD depowered
-	ELSE:
+	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, UNSUSPENDING:
+		meSuctionPumpVFDEnabled := TRUE; //VFD start
+	ELSE
+		meSuctionPumpVFDEnabled := FALSE; //VFD stop
 END_CASE
