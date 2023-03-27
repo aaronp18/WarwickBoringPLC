@@ -11,13 +11,17 @@ VAR_GLOBAL
     finishedSuspending: BOOL := FALSE; //high when PLC has suspended
     unsuspendSignal : BOOL := FALSE; //high when PLC should unsuspend
     finishedUnsuspending: BOOL := FALSE; //high when PLC has unsuspended
+    stopSignal:   BOOL := FALSE; //high when PLC should stop
     finishingStopping:   BOOL := FALSE; //high when PLC has stopped
+    abortSignal:  BOOL := FALSE; //high when PLC should abort
     finishedAborting:   BOOL := FALSE; //high when PLC has aborted
     clearSignal: BOOL := FALSE; //high when PLC should clear
     resetTrigger: R_TRIG;
     startTrigger: R_TRIG;
     suspendTrigger: R_TRIG;
     unsuspendTrigger: R_TRIG;
+    stoppingTrigger: R_TRIG;
+    abortTrigger: R_TRIG;
     clearTrigger: R_TRIG;
     stateError:  BOOL := FALSE; //high when PLC was in an invalid state
 END_VAR
