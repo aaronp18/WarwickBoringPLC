@@ -2,17 +2,28 @@
 VAR
     resetTP : TP;
     resetTON : TON;
+    stoppingTP : TP;
+    stoppingTON : TON;
+    suspendingTP : TP;
+    suspendingTON : TON;
+    unsuspendingTP : TP;
+    unsuspendingTON : TON;
 END_VAR
 
-//each timer about 2s
-//add timer to stopping
-//add timer to suspending
-//add timer to unsuspending
-//add timer to starting 
+//each timer 2s
 
 //init vars
 resetTP (IN:= systemGVL.resetTrigger.Q, PT := T#3s);
 resetTON (IN:= resetTP.Q, PT := T#2s);
+stoppingTP (IN:= systemGVL.stoppingTrigger.Q, PT := T#3s);
+stoppingTON (IN:= stoppingTP.Q, PT := T#2s);
+suspendingTP (IN:= systemGVL.suspendingTrigger.Q, PT := T#3s);
+suspendingTON (IN:= suspendingTP.Q, PT := T#2s);
+unsuspendingTP (IN:= systemGVL.unsuspendingTrigger.Q, PT := T#3s);
+unsuspendingTON (IN:= unsuspendingTP.Q, PT := T#2s);
+startingTP (IN:= systemGVL.startingTrigger.Q, PT := T#3s);
+startingTON (IN:= startingTP.Q, PT := T#2s);
+
 
 //logic
 IF systemGVL.SYSTEM_STATE >= 0 THEN
@@ -45,6 +56,5 @@ IF systemGVL.SYSTEM_STATE >= 0 THEN
     //TL power off
     //hydraulics power on, relief valve open, depressurised
     //1 if so, 0 if not
-
 
 END_IF
