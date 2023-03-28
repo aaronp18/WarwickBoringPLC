@@ -1,28 +1,23 @@
 PROGRAM Electronics
 
 VAR
-    runningClk : CLK;
-    start_unsus : BOOL;
+    blinkingCLK : Clock;
+    blinkingCLKStart : BOOL : := FALSE;
 END_VAR
 
-runningClk(EN:= start_unsus, ON_PERIOD:= T#500ms, OFF_PERIOD:= T#500ms); // init running clk - period 1s, 0.5 duty cycle
+blinkingCLK(EN := blinkingCLKStart, ON_PERIOD := T#500ms, OFF_PERIOD := T#500ms); // init running clk - period 1s, 0.5 duty cycle
 
-// #####################
-// ## start_unsus var ##
-CASE systemGVL.systemState OF
-    SYSTEM_STATE.UNSUSPENDING, SYSTEM_STATE.STARTING:
-        start_unsus:= TRUE;
-    ELSE
-        start_unsus:= FALSE;
-END_CASE
+// Starts False, so set to true, gives us a permenant clock
+blinkingCLKStart := TRUE;
+
 
 // #######################
 // ## Running Indicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.RUNNING:
-        mGVL.isRunningIndicator := TRUE; //running light on - actively moving forward
-    SYSTEM_STATE.UNSUSPENDING, SYSTEM_STATE.STARTING:
-        mGVL.isRunningIndicator := runningClk.Q; //flash running light - imminently moving forward
+    SYSTEM_STATE.RUNNING :
+        mGVL.isRunningIndicator := TRUE; // running light on - actively moving forward
+    SYSTEM_STATE.UNSUSPENDING, SYSTEM_STATE.STARTING :
+        mGVL.isRunningIndicator := blinkingCLK.Q; // flash running light - imminently moving forward
     ELSE
         mGVL.isRunningIndicator := FALSE;
 END_CASE
@@ -30,10 +25,9 @@ END_CASE
 // ######################
 // ## Paused Indicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.SUSPENDED:
-        mGVL.isPausedIndicator := TRUE; //paused indicator on - temp stopped/stopping
-    SYSTEM_STATE.SUSPENDING:
-
+    SYSTEM_STATE.SUSPENDED :
+        mGVL.isPausedIndicator := TRUE; // paused indicator on - temp stopped/stopping
+    SYSTEM_STATE.SUSPENDING,
     ELSE
         mGVL.isPausedIndicator := FALSE;
 END_CASE
@@ -41,8 +35,9 @@ END_CASE
 // #######################
 // ## Startup Indicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.RESETTING, SYSTEM_STATE.IDLE, SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.SUSPENDING, SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.UNSUSPENDING:
-        mGVL.isStartupIndicator := TRUE;//startup indicator on - getting ready to start running/running
+    SYSTEM_STATE.RESETTING, SYSTEM_STATE.IDLE, SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING,
+    SYSTEM_STATE.SUSPENDING, SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.UNSUSPENDING :
+        mGVL.isStartupIndicator := TRUE; // startup indicator on - getting ready to start running/running
     ELSE
         mGVL.isStartupIndicator := FALSE;
 END_CASE
@@ -59,7 +54,7 @@ END_CASE
 // #######################
 // ## All Light Control ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.NULL:
+    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.NULL :
         // all lights on when initialising
         mGVL.isControlledStopIndicator := TRUE;
         mGVL.isStartupIndicator := TRUE;
