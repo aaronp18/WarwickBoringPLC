@@ -5,16 +5,12 @@ END_VAR
 VAR_OUTPUT
 END_VAR
 VAR
-	// Feeder pump clock
-	// TODO
-	
+	feederPumpClock : CLK; // Feeder pump clock
 END_VAR
 
 
 
-// Feeder Pump Auto control clock
-// TODO
-
+feederPumpClock(EN:= meGVL.meFeederPumpEnabled AND meGVL.meFeederPumpUserEnabled, ON_PERIOD:= T#1s, OFF_PERIOD:= T#1s, Q=> meGVL.meFeederPumpAutoPower); //TODO - change on/off period to correct values
 
 // If feeder pump is not enabled, the power off
 IF NOT meGVL.meFeederPumpEnabled OR NOT meGVL.meFeederPumpUserEnabled THEN
@@ -32,6 +28,3 @@ END_IF
 
 // Assign feeder pump contactor
 mGVL.feederPumpContactor := meGVL.mePowerFeederPump;
-
-// Reset feeder pump clock on rising edge of Auto Control Request
-// TODO
