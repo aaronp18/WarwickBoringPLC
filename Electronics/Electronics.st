@@ -45,8 +45,8 @@ END_CASE
 // ###############################
 // ## isControlledStopIndicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, SYSTEM_STATE.STmGVL.isRunningIndicator := TRUE;
-        mGVL.isControlledStopIndicator := TRUE; // stopped indicator on - stopped/stopping in a safe state
+    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, SYSTEM_STATE.STOPPING, SYSTEM_STATE.CLEARING := TRUE;
+        mGVL.isControlledStopIndicator := TRUE; //stopped indicator on - stopped/stopping in a safe state
     ELSE
         mGVL.isControlledStopIndicator := FALSE;
 END_CASE
