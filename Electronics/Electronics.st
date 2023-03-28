@@ -4,7 +4,6 @@ VAR
     blinkingCLK : Clock;
     blinkingCLKStart : BOOL : := FALSE;
 END_VAR
-
 blinkingCLK(EN := blinkingCLKStart, ON_PERIOD := T#500ms, OFF_PERIOD := T#500ms); // init running clk - period 1s, 0.5 duty cycle
 
 // Starts False, so set to true, gives us a permenant clock
@@ -25,9 +24,8 @@ END_CASE
 // ######################
 // ## Paused Indicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.SUSPENDED :
-        mGVL.isPausedIndicator := TRUE; // paused indicator on - temp stopped/stopping
-    SYSTEM_STATE.SUSPENDING,
+    SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.SUSPENDING :
+        mGVL.isPausedIndicator := blinkingCLK.Q; // paused indicator blinking - temp stopped/stopping
     ELSE
         mGVL.isPausedIndicator := FALSE;
 END_CASE
@@ -44,9 +42,10 @@ END_CASE
 
 // ###############################
 // ## isControlledStopIndicator ##
+// Essentially in the stopped position
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, SYSTEM_STATE.STOPPING, SYSTEM_STATE.CLEARING := TRUE;
-        mGVL.isControlledStopIndicator := TRUE; //stopped indicator on - stopped/stopping in a safe state
+    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, SYSTEM_STATE.STOPPING :
+        mGVL.isControlledStopIndicator := TRUE; // stopped indicator on - stopped/stopping in a safe state
     ELSE
         mGVL.isControlledStopIndicator := FALSE;
 END_CASE
