@@ -1,10 +1,28 @@
 PROGRAM Electronics
 
+VAR
+    runningClk : CLK;
+    start_unsus : BOOL;
+END_VAR
+
+runningClk(EN:= start_unsus, ON_PERIOD:= T#500ms, OFF_PERIOD:= T#500ms); // init running clk - period 1s, 0.5 duty cycle
+
+// #####################
+// ## start_unsus var ##
+CASE systemGVL.systemState OF
+    SYSTEM_STATE.UNSUSPENDING, SYSTEM_STATE.STARTING:
+        start_unsus:= TRUE;
+    ELSE
+        start_unsus:= FALSE;
+END_CASE
+
 // #######################
 // ## Running Indicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.RUNNING, SYSTEM_STATE.UNSUSPENDING, SYSTEM_STATE.STARTING:
-        mGVL.isRunningIndicator := TRUE; //running light on - actively moving forward/imminently moving forward
+    SYSTEM_STATE.RUNNING:
+        mGVL.isRunningIndicator := TRUE; //running light on - actively moving forward
+    SYSTEM_STATE.UNSUSPENDING, SYSTEM_STATE.STARTING:
+        mGVL.isRunningIndicator := runningClk.Q; //flash running light - imminently moving forward
     ELSE
         mGVL.isRunningIndicator := FALSE;
 END_CASE
@@ -12,8 +30,10 @@ END_CASE
 // ######################
 // ## Paused Indicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.SUSPENDING, SYSTEM_STATE.SUSPENDED:
+    SYSTEM_STATE.SUSPENDED:
         mGVL.isPausedIndicator := TRUE; //paused indicator on - temp stopped/stopping
+    SYSTEM_STATE.SUSPENDING:
+
     ELSE
         mGVL.isPausedIndicator := FALSE;
 END_CASE
@@ -30,7 +50,7 @@ END_CASE
 // ###############################
 // ## isControlledStopIndicator ##
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, SYSTEM_STATE.STmGVL.isRunningIndicator := TRUE;OPPING, SYSTEM_STATE.CLEARING:
+    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, SYSTEM_STATE.STmGVL.isRunningIndicator := TRUE;
         mGVL.isControlledStopIndicator := TRUE; //stopped indicator on - stopped/stopping in a safe state
     ELSE
         mGVL.isControlledStopIndicator := FALSE;
