@@ -1,7 +1,6 @@
 PROGRAM MaterialExtraction
 VAR
 	consumptionMeterLogic : meConsumption;
-
 	feederPumpControlLogic : meFeederPumpControl;
 END_VAR
 
@@ -18,11 +17,10 @@ consumptionMeterLogic();
 feederPumpControlLogic();
 
 
-
 // #############################
 // ### 1P Machine Power C12  ###
 // #############################
-// control for ME 1 Phase - polymer pump, polymer mixer
+// control for ME 1 Phase - polymer pump, polymer mixerhttps://www.sparkfun.com/datasheets/Sensors/Biometric/MQ-4.pdf
 CASE systemGVL.systemState OF
 	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, UNSUSPENDING:
 		meGVL.me1PMachineEnabled := TRUE; //polymer pump & mixer start
@@ -50,9 +48,9 @@ END_CASE
 CASE systemGVL.systemState OF
 	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.SUSPENDING, 
 	SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.UNSUSPENDING:
-		meSuctionPumpContactorEnabled := TRUE; //suction pump contactor enabled
+		meGVL.meSuctionPumpContactorEnabled := TRUE; //suction pump contactor enabled
 	ELSE
-		meSuctionPumpContactorEnabled := FALSE; //suction pump contactor disabled
+		meGVL.meSuctionPumpContactorEnabled := FALSE; //suction pump contactor disabled
 END_CASE
 
 // ####################
@@ -62,7 +60,7 @@ END_CASE
 // actively digging - running, unsuspending, starting
 CASE systemGVL.systemState OF
 	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, UNSUSPENDING:
-		meSuctionPumpVFDEnabled := TRUE; //VFD start
+		meGVL.meSuctionPumpVFDEnabled := TRUE; //VFD start
 	ELSE
-		meSuctionPumpVFDEnabled := FALSE; //VFD stop
+		meGVL.meSuctionPumpVFDEnabled := FALSE; //VFD stop
 END_CASE
