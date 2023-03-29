@@ -34,8 +34,7 @@ END_CASE
 // ####################
 // control for contactor of feeder pump
 CASE systemGVL.systemState OF
-	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.SUSPENDING, 
-	SYSTEM_STATE.SUSPENDED, SYSTEM_STATE.UNSUSPENDING:
+	SYSTEM_STATE.STARTING, SYSTEM_STATE.RUNNING, SYSTEM_STATE.UNSUSPENDING:
 		meGVL.meFeederPumpEnabled := TRUE; //feeder pump enabled
 	ELSE
 		meGVL.meFeederPumpEnabled := FALSE; //feeder pump disabled
