@@ -44,11 +44,21 @@ END_CASE
 // ## isControlledStopIndicator ##
 // Essentially in the stopped position
 CASE systemGVL.systemState OF
-    SYSTEM_STATE.INITIALISING, SYSTEM_STATE.STOPPED, SYSTEM_STATE.STOPPING :
+    SYSTEM_STATE.STOPPED, SYSTEM_STATE.STOPPING :
         mGVL.isControlledStopIndicator := TRUE; // stopped indicator on - stopped/stopping in a safe state
     ELSE
         mGVL.isControlledStopIndicator := FALSE;
 END_CASE
+
+// ###########################
+// ## isResettableIndicator ##
+CASE systemGVL.systemState OF
+    SYSTEM_STATE.RESETTING:
+        mGVL.isResettableIndicator := blinkingCLK.Q; // reset indicator blinking - resetting
+    ELSE
+        mGVL.isResettableIndicator := interlocksGVL.isResettable;
+END_CASE
+
 
 // #######################
 // ## All Light Control ##
