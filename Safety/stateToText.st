@@ -3,38 +3,38 @@ VAR_INPUT
     state : SYSTEM_STATE;
 END_VAR
 VAR_OUTPUT
-    stateString : STRING;
+    StateToString : STRING;
 END_VAR
 
 CASE state OF
-    SYSTEM_STATE.NULL:
-        stateString := 'NULL';
-    SYSTEM_STATE.INITIALISING:
-        stateString := 'INITIALISING';
-    SYSTEM_STATE.STOPPED:
-        stateString := 'STOPPED';
-    SYSTEM_STATE.RESETTING:
-        stateString := 'RESETTING';
-    SYSTEM_STATE.IDLE:
-        stateString := 'IDLE';
-    SYSTEM_STATE.STARTING:
-        stateString := 'STARTING';
-    SYSTEM_STATE.RUNNING:
-        stateString := 'RUNNING';
-    SYSTEM_STATE.SUSPENDING:
-        stateString := 'SUSPENDING';
-    SYSTEM_STATE.SUSPENDED:
-        stateString := 'SUSPENDED';
-    SYSTEM_STATE.UNSUSPENDING:
-        stateString := 'UNSUSPENDING';
-    SYSTEM_STATE.STOPPING:
-        stateString := 'STOPPING';
-    SYSTEM_STATE.ABORTING:
-        stateString := 'ABORTING';
-    SYSTEM_STATE.ABORTED:
-        stateString := 'ABORTED';
-    SYSTEM_STATE.CLEARING:
-        stateString := 'CLEARING';
+    SYSTEM_STATE.NULL :
+        StateToString := 'NULL';
+    SYSTEM_STATE.INITIALISING :
+        StateToString := 'INITIALISING';
+    SYSTEM_STATE.STOPPED :
+        StateToString := 'STOPPED';
+    SYSTEM_STATE.RESETTING :
+        StateToString := 'RESETTING';
+    SYSTEM_STATE.IDLE :
+        StateToString := 'IDLE';
+    SYSTEM_STATE.STARTING :
+        StateToString := 'STARTING';
+    SYSTEM_STATE.RUNNING :
+        StateToString := 'RUNNING';
+    SYSTEM_STATE.SUSPENDING :
+        StateToString := 'SUSPENDING';
+    SYSTEM_STATE.SUSPENDED :
+        StateToString := 'SUSPENDED';
+    SYSTEM_STATE.UNSUSPENDING :
+        StateToString := 'UNSUSPENDING';
+    SYSTEM_STATE.STOPPING :
+        StateToString := 'STOPPING';
+    SYSTEM_STATE.ABORTING :
+        StateToString := 'ABORTING';
+    SYSTEM_STATE.ABORTED :
+        StateToString := 'ABORTED';
+    SYSTEM_STATE.CLEARING :
+        StateToString := 'CLEARING';
     ELSE
-        stateString := 'ERROR';
+        StateToString := 'ERROR';
 END_CASE
